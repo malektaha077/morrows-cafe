@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f7f0">
+  <meta name="description" content="Morrow & Moss is your neighborhood coffee house for slow mornings, excellent coffee, and something good from the oven.">
+  <title>Morrow &amp; Moss — Coffee, at your own pace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f8f7f0;
+      --ink: #252a22;
+      --green: #344c36;
+      --moss: #60724c;
+      --lime: #d8e18e;
+      --orange: #c76542;
+      --muted: #76776e;
+      --line: rgba(37, 42, 34, .17);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    button { color: inherit; }
+    .announcement { min-height: 35px; display: flex; justify-content: center; align-items: center; gap: 9px; padding: 7px 16px; background: var(--green); color: white; text-align: center; font-size: 11px; letter-spacing: .3px; }
+    .announcement span { color: var(--lime); }
+    .nav-wrap { position: relative; z-index: 5; border-bottom: 1px solid var(--line); }
+    .nav { width: min(1280px, 100% - 80px); height: 76px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 700; letter-spacing: -.7px; }
+    .brand-mark { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; background: var(--lime); color: var(--green); font-family: var(--serif); font-size: 19px; }
+    .nav-links { display: flex; align-items: center; gap: 35px; color: #54564e; font-size: 12px; font-weight: 500; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .hours-link { font-size: 11px; color: var(--muted); }
+    .button { min-height: 43px; padding: 0 19px; display: inline-flex; justify-content: center; align-items: center; gap: 10px; border: 1px solid var(--green); border-radius: 3px; background: var(--green); color: #fff; cursor: pointer; font-size: 11px; font-weight: 600; transition: background .2s, color .2s, transform .2s; }
+    .button:hover { transform: translateY(-2px); background: var(--orange); border-color: var(--orange); }
+    .button-outline { background: transparent; color: var(--green); }
+    .button-outline:hover { color: white; }
+    .menu-toggle { display: none; width: 40px; height: 40px; background: transparent; border: 1px solid var(--line); border-radius: 3px; cursor: pointer; font-size: 18px; }
+    .hero { width: min(1280px, 100% - 80px); margin: auto; min-height: 594px; padding: 53px 0 66px; display: grid; grid-template-columns: 1fr 1.01fr; align-items: center; gap: 72px; }
+    .hero-copy { padding: 0 0 4px 18px; animation: arrive .7s ease both; }
+    .eyebrow { display: flex; align-items: center; gap: 9px; color: var(--moss); font-size: 10px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 23px; height: 1px; background: var(--orange); }
+    h1 { max-width: 550px; margin: 23px 0 18px; font-family: var(--serif); font-size: clamp(57px, 6vw, 79px); font-weight: 500; line-height: .99; letter-spacing: 0; }
+    h1 em { color: var(--orange); font-weight: 500; }
+    .hero-description { max-width: 395px; margin: 0; color: #66675e; font-size: 13px; line-height: 1.9; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; margin-top: 27px; }
+    .reviews { display: flex; align-items: center; gap: 11px; margin-top: 32px; color: var(--muted); font-size: 10px; }
+    .review-stars { color: var(--orange); letter-spacing: 2px; font-size: 11px; }
+    .review-divider { width: 1px; height: 14px; background: var(--line); }
+    .hero-art { min-width: 0; position: relative; animation: arrive .8s .1s ease both; }
+    .hero-image { width: 100%; height: 435px; display: block; object-fit: cover; border-radius: 49% 49% 3px 3px; }
+    .hero-caption { position: absolute; right: -13px; bottom: 24px; padding: 13px 17px; background: var(--lime); color: var(--green); font-size: 10px; line-height: 1.7; transform: rotate(2deg); }
+    .hero-caption b { display: block; font-family: var(--serif); font-size: 17px; font-weight: 600; }
+    .image-note { position: absolute; top: 22px; left: -26px; padding: 9px 12px; background: var(--paper); color: var(--green); font-size: 9px; letter-spacing: .5px; writing-mode: vertical-rl; }
+    .ticker { overflow: hidden; border-block: 1px solid var(--line); background: #f0efe5; }
+    .ticker-track { min-height: 51px; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 19px; padding: 9px 20px; color: var(--green); font-size: 10px; font-weight: 600; letter-spacing: .65px; text-transform: uppercase; }
+    .ticker-dot { color: var(--orange); font-size: 13px; }
+    .section { width: min(1120px, 100% - 80px); margin: auto; }
+    .menu-section { padding: 103px 0 99px; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 31px; }
+    .section-heading h2, .story-copy h2, .visit-copy h2 { margin: 12px 0 0; font-family: var(--serif); font-size: 44px; font-weight: 500; line-height: 1.1; letter-spacing: 0; }
+    .section-heading > p { max-width: 280px; margin: 0 0 3px; color: var(--muted); font-size: 11px; line-height: 1.8; }
+    .menu-tabs { display: flex; gap: 25px; border-bottom: 1px solid var(--line); }
+    .menu-tab { position: relative; padding: 12px 0; border: 0; background: none; color: var(--muted); cursor: pointer; font-size: 11px; }
+    .menu-tab[aria-selected="true"] { color: var(--green); font-weight: 700; }
+    .menu-tab[aria-selected="true"]::after { position: absolute; right: 0; bottom: -1px; left: 0; height: 2px; content: ""; background: var(--orange); }
+    .menu-list { display: grid; grid-template-columns: 1fr 1fr; column-gap: 65px; }
+    .menu-item { min-height: 91px; display: flex; justify-content: space-between; align-items: center; gap: 15px; border-bottom: 1px solid var(--line); }
+    .menu-item h3 { margin: 0 0 5px; font-family: var(--serif); font-size: 17px; font-weight: 500; }
+    .menu-item p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .menu-price { flex: none; color: var(--green); font-size: 11px; font-weight: 600; }
+    .story { background: var(--green); color: var(--paper); }
+    .story-inner { width: min(1120px, 100% - 80px); margin: auto; padding: 75px 0; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 82px; }
+    .story-art { position: relative; }
+    .story-image { width: 100%; height: 362px; display: block; object-fit: cover; border-radius: 3px; }
+    .story-stamp { position: absolute; right: -25px; bottom: -18px; width: 79px; height: 79px; display: grid; place-items: center; border: 1px solid var(--lime); border-radius: 50%; color: var(--lime); font-family: var(--serif); font-size: 14px; line-height: 1.4; text-align: center; transform: rotate(-12deg); }
+    .story-copy .eyebrow { color: var(--lime); }
+    .story-copy h2 { max-width: 400px; margin: 18px 0; font-size: 42px; }
+    .story-copy h2 em { color: var(--lime); font-weight: 500; }
+    .story-copy > p { max-width: 405px; color: rgba(255,255,255,.72); font-size: 11px; line-height: 2; }
+    .story-copy .button { margin-top: 10px; border-color: var(--lime); background: var(--lime); color: var(--green); }
+    .story-copy .button:hover { border-color: white; background: white; }
+    .visit { padding-top: 92px; padding-bottom: 98px; }
+    .visit-grid { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 78px; }
+    .visit-copy h2 { margin-bottom: 24px; }
+    .visit-details { display: grid; gap: 17px; }
+    .detail { display: grid; grid-template-columns: 98px 1fr; gap: 12px; font-size: 10px; line-height: 1.8; }
+    .detail-label { color: var(--moss); font-weight: 700; text-transform: uppercase; letter-spacing: .8px; }
+    .detail-value { color: #65665d; }
+    .visit-copy .button { margin-top: 22px; }
+    .visit-image-wrap { position: relative; }
+    .visit-image { width: 100%; height: 307px; display: block; object-fit: cover; }
+    .address-tag { position: absolute; right: 13px; bottom: 13px; padding: 12px 16px; background: var(--paper); color: var(--green); font-size: 10px; }
+    .footer { background: #eeede3; }
+    .footer-inner { width: min(1120px, 100% - 80px); min-height: 83px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 10px; }
+    .footer-social { display: flex; gap: 19px; }
+    .footer-social a:hover { color: var(--orange); }
+    .modal { position: fixed; inset: 0; z-index: 20; display: none; place-items: center; padding: 18px; background: rgba(29, 35, 28, .58); }
+    .modal.is-open { display: grid; }
+    .modal-card { position: relative; width: min(100%, 445px); padding: 35px; background: var(--paper); box-shadow: 0 18px 70px rgba(0,0,0,.18); animation: arrive .2s ease both; }
+    .modal-close { position: absolute; top: 14px; right: 14px; width: 33px; height: 33px; border: 1px solid var(--line); background: transparent; cursor: pointer; font-size: 18px; }
+    .modal-card h2 { margin: 14px 0 8px; font-family: var(--serif); font-size: 34px; font-weight: 500; }
+    .modal-intro { margin: 0 0 20px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+    .booking-form { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .field { display: grid; gap: 6px; }
+    .field-wide { grid-column: 1 / -1; }
+    .field label { color: var(--green); font-size: 10px; font-weight: 600; }
+    .field input, .field select { width: 100%; min-height: 41px; padding: 0 10px; border: 1px solid var(--line); border-radius: 2px; background: #fff; color: var(--ink); font-size: 11px; }
+    .booking-form .button { grid-column: 1 / -1; margin-top: 3px; }
+    .booking-message { grid-column: 1 / -1; min-height: 16px; margin: 0; color: var(--green); font-size: 11px; line-height: 1.6; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @media (min-width: 1440px) { .hero { min-height: 650px; } .hero-image { height: 475px; } }
+    @media (max-width: 760px) {
+      .announcement { font-size: 9px; }
+      .nav { width: calc(100% - 36px); height: 64px; }
+      .hours-link { display: none; }
+      .nav-actions { gap: 8px; }
+      .nav-actions .button { min-height: 38px; padding-inline: 12px; font-size: 10px; }
+      .menu-toggle { display: block; }
+      .nav-links { position: absolute; top: 63px; right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 7px 18px 13px; border-bottom: 1px solid var(--line); background: var(--paper); }
+      .nav-links.is-open { display: flex; }
+      .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+      .nav-links a:last-child { border-bottom: 0; }
+      .hero { width: calc(100% - 40px); min-height: auto; padding: 52px 0 43px; grid-template-columns: 1fr; gap: 31px; }
+      .hero-copy { padding-left: 0; }
+      h1 { max-width: 440px; margin-top: 19px; font-size: clamp(53px, 12vw, 73px); }
+      .hero-description { max-width: 370px; }
+      .hero-image { height: min(90vw, 380px); }
+      .hero-art { margin-inline: 12px 7px; }
+      .image-note { left: -15px; }
+      .hero-caption { right: -6px; bottom: 15px; }
+      .ticker-track { gap: 10px; font-size: 8px; }
+      .section, .story-inner, .footer-inner { width: calc(100% - 40px); }
+      .menu-section { padding: 67px 0 68px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 12px; margin-bottom: 20px; }
+      .section-heading h2, .story-copy h2, .visit-copy h2 { font-size: 38px; }
+      .section-heading > p { max-width: 350px; }
+      .menu-list { grid-template-columns: 1fr; }
+      .story-inner { padding: 54px 0 62px; grid-template-columns: 1fr; gap: 38px; }
+      .story-image { height: min(77vw, 360px); }
+      .story-stamp { right: -8px; }
+      .visit { padding-top: 67px; padding-bottom: 66px; }
+      .visit-grid { grid-template-columns: 1fr; gap: 33px; }
+      .visit-image { height: min(64vw, 290px); }
+      .footer-inner { min-height: 92px; flex-wrap: wrap; justify-content: space-between; padding: 15px 0; }
+      .footer-inner > span { width: 100%; order: 2; }
+      .modal-card { padding: 29px 23px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="announcement">Good coffee. Good company. <span>Open every day, 8–4.</span></div>
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Morrow and Moss home"><span class="brand-mark">m.</span>MORROW &amp; MOSS</a>
+      <div class="nav-links" id="nav-links"><a href="#menu">The menu</a><a href="#story">Our kind of place</a><a href="#visit">Come find us</a></div>
+      <div class="nav-actions"><span class="hours-link">TODAY · 8AM–4PM</span><button class="button" type="button" data-book>Find a table <span aria-hidden="true">↗</span></button><button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="nav-links">☰</button></div>
+    </nav>
+  </div>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy"><div class="eyebrow">Your neighborhood, a little slower</div><h1>Make room<br>for <em>the good</em><br>part of today.</h1><p class="hero-description">Really good coffee, warm bread, and absolutely nowhere else you need to be. Your neighborhood corner table is waiting.</p><div class="hero-actions"><a class="button" href="#menu">See what's brewing <span aria-hidden="true">↘</span></a><button class="button button-outline" type="button" data-book>Save me a seat</button></div><div class="reviews"><span class="review-stars" aria-label="Five stars">★★★★★</span><span>4.9 from the neighborhood</span><span class="review-divider"></span><span>Est. 2018, with love</span></div></div>
+      <div class="hero-art"><span class="image-note">POURED WITH A LITTLE PATIENCE</span><img class="hero-image" src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&amp;fit=crop&amp;w=1100&amp;q=85" alt="A freshly poured cup of coffee at a sunlit cafe"><div class="hero-caption"><b>Come as you are.</b>Stay a little longer.</div></div>
+    </section>
+    <div class="ticker"><div class="ticker-track"><span>Slow mornings</span><span class="ticker-dot">✳</span><span>Local roasts</span><span class="ticker-dot">✳</span><span>Warm from the oven</span><span class="ticker-dot">✳</span><span>Your usual, remembered</span><span class="ticker-dot">✳</span><span>Slow mornings</span></div></div>
+    <section class="section menu-section" id="menu">
+      <div class="section-heading"><div><div class="eyebrow">The nice things</div><h2>A little something for everyone.</h2></div><p>Thoughtful ingredients, made fresh every morning. Sometimes the simple things are the whole thing.</p></div>
+      <div class="menu-tabs" role="tablist" aria-label="Menu categories"><button class="menu-tab" id="tab-coffee" role="tab" aria-selected="true" aria-controls="menu-list" data-category="coffee">Coffee &amp; tea</button><button class="menu-tab" id="tab-bakes" role="tab" aria-selected="false" aria-controls="menu-list" data-category="bakes">From the oven</button><button class="menu-tab" id="tab-brunch" role="tab" aria-selected="false" aria-controls="menu-list" data-category="brunch">Little lunches</button></div><div class="menu-list" id="menu-list" role="tabpanel" aria-live="polite"></div>
+    </section>
+    <section class="story" id="story"><div class="story-inner"><div class="story-art"><img class="story-image" src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="The inviting, sunlit interior of our neighborhood coffee shop" loading="lazy"><div class="story-stamp">made<br>with care</div></div><div class="story-copy"><div class="eyebrow">A little place to land</div><h2>Good things happen when you <em>stay awhile.</em></h2><p>Morrow &amp; Moss started with a simple idea: the places we return to are the ones that make us feel at home. So we make everything with care, learn the regulars' orders by heart, and always leave a seat open by the window.</p><p>Independent, proudly local, and happy you're here since 2018.</p><button class="button" type="button" data-book>Come say hello <span aria-hidden="true">↗</span></button></div></div></section>
+    <section class="section visit" id="visit"><div class="visit-grid"><div class="visit-copy"><div class="eyebrow">Just around the corner</div><h2>Your new favorite seat.</h2><div class="visit-details"><div class="detail"><span class="detail-label">Find us</span><span class="detail-value">42 Willow Lane<br>Portland, OR 97214</span></div><div class="detail"><span class="detail-label">Every day</span><span class="detail-value">Monday–Sunday<br>8:00 in the morning–4:00 in the afternoon</span></div><div class="detail"><span class="detail-label">Good to know</span><span class="detail-value">Dogs welcome on the patio. Oat milk is on us.</span></div></div><a class="button" href="https://maps.google.com/?q=42+Willow+Lane+Portland+OR+97214" target="_blank" rel="noreferrer">Get directions <span aria-hidden="true">↗</span></a></div><div class="visit-image-wrap"><img class="visit-image" src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&amp;fit=crop&amp;w=1200&amp;q=85" alt="A welcoming cafe exterior ready for your morning coffee" loading="lazy"><div class="address-tag">42 Willow Lane · Portland, Oregon</div></div></div></section>
+  </main>
+  <footer class="footer"><div class="footer-inner"><a class="brand" href="#home"><span class="brand-mark">m.</span>MORROW &amp; MOSS</a><span>Independent, local, and glad you stopped by. © 2026 Morrow &amp; Moss.</span><div class="footer-social"><a href="https://instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</a><a href="mailto:hello@morrowandmoss.example">Say hello ↗</a></div></div></footer>
+  <div class="modal" id="booking-modal" role="dialog" aria-modal="true" aria-labelledby="booking-title" aria-hidden="true"><div class="modal-card"><button class="modal-close" type="button" aria-label="Close reservation form">×</button><div class="eyebrow">A seat at the table</div><h2 id="booking-title">Come on over.</h2><p class="modal-intro">Pick a time and we’ll have a spot ready. Walk-ins are always welcome, too.</p><form class="booking-form" id="booking-form"><div class="field"><label for="guest-name">Your name</label><input id="guest-name" name="name" autocomplete="name" placeholder="First and last" required></div><div class="field"><label for="guest-count">Party size</label><select id="guest-count" name="guests"><option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option></select></div><div class="field"><label for="booking-date">Date</label><input id="booking-date" name="date" type="date" required></div><div class="field"><label for="booking-time">Time</label><select id="booking-time" name="time" required><option value="">Choose a time</option><option>8:00 AM</option><option>9:00 AM</option><option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option><option>1:00 PM</option><option>2:00 PM</option><option>3:00 PM</option></select></div><button class="button" type="submit">Request a table <span aria-hidden="true">↗</span></button><p class="booking-message" id="booking-message" aria-live="polite"></p></form></div></div>
+  <script>
+    const menus = {
+      coffee: [["The house flat white", "Our Wilder Hill espresso, a soft blanket of milk.", "$4.50"], ["Honey cardamom latte", "Espresso, steamed milk, local honey, a little spice.", "$5.50"], ["Pour-over, right now", "Single origin, carefully brewed. Ask us what's on.", "$5.00"], ["Cold brew & oat", "Eighteen hours, no rush. Oat milk if you'd like.", "$5.00"], ["The neighborhood drip", "Fresh coffee, free refills when you settle in.", "$3.50"], ["Something without coffee", "Tea, matcha, drinking chocolate & seasonal things.", "$4.00"]],
+      bakes: [["Brown butter morning bun", "Rolled at dawn, baked until the edges go crisp.", "$5.00"], ["Almond croissant", "Twice-baked, generously filled, dusted just so.", "$5.50"], ["Olive oil & citrus cake", "Soft crumb, bright lemon, a little rosemary.", "$5.00"], ["Sourdough toast", "Thick-cut local loaf, cultured butter, flaky salt.", "$6.00"], ["The little cookie", "Brown sugar, dark chocolate, just a pinch of salt.", "$3.00"], ["Jammy oat bar", "Chewy oats and this week's fruit preserve.", "$4.00"]],
+      brunch: [["Morrow egg sandwich", "Soft eggs, sharp cheddar, scallion mayo, brioche.", "$11.00"], ["Avocado on toast", "Smashed avocado, lemon, chili crunch, good bread.", "$12.00"], ["Little green bowl", "Seasonal grains, crisp greens, soft herbs, tahini.", "$13.00"], ["Tomato & whipped ricotta", "The best tomatoes we can find, warm sourdough.", "$12.00"], ["Soup for this kind of day", "A new pot every morning. Comes with toast.", "$10.00"], ["Something for the table", "Ask us what the kitchen's excited about today.", "$MP"]]
+    };
+    const menuList = document.querySelector("#menu-list");
+    document.querySelectorAll(".menu-tab").forEach((tab) => tab.addEventListener("click", () => {
+      document.querySelectorAll(".menu-tab").forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
+      menuList.replaceChildren(...menus[tab.dataset.category].map(([name, description, price]) => {
+        const item = document.createElement("article");
+        item.className = "menu-item";
+        const text = document.createElement("div");
+        const title = document.createElement("h3");
+        title.textContent = name;
+        const detail = document.createElement("p");
+        detail.textContent = description;
+        const cost = document.createElement("span");
+        cost.className = "menu-price";
+        cost.textContent = price;
+        text.append(title, detail);
+        item.append(text, cost);
+        return item;
+      }));
+    }));
+    document.querySelector('[data-category="coffee"]').click();
+
+    const modal = document.querySelector("#booking-modal");
+    const closeButton = document.querySelector(".modal-close");
+    const bookingDate = document.querySelector("#booking-date");
+    const today = new Date();
+    const localToday = new Date(today.getTime() - today.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+    bookingDate.min = localToday;
+    bookingDate.value = localToday;
+    const closeModal = () => {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+    };
+    document.querySelectorAll("[data-book]").forEach((button) => button.addEventListener("click", () => {
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.querySelector("#guest-name").focus();
+    }));
+    closeButton.addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => { if (event.target === modal) closeModal(); });
+    document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeModal(); });
+    document.querySelector("#booking-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const details = new FormData(event.currentTarget);
+      const day = new Date(`${details.get("date")}T12:00:00`).toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" });
+      document.querySelector("#booking-message").textContent = `Thanks, ${details.get("name")}! Your table request for ${details.get("guests")} on ${day} at ${details.get("time")} is noted. See you soon.`;
+      event.currentTarget.querySelector('button[type="submit"]').textContent = "Request noted ✓";
+    });
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector("#nav-links");
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      menuToggle.setAttribute("aria-label", isExpanded ? "Open navigation" : "Close navigation");
+      navLinks.classList.toggle("is-open", !isExpanded);
+    });
+    navLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      navLinks.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Open navigation");
+    }));
+  </script>
+</body>
+</html> 
